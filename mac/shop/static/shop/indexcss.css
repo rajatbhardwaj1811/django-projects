@@ -1,0 +1,14 @@
+.h1{
+    background-color: aqua;
+    text-align: center;
+}
+.image{
+    width: 1175px;
+    height: 560px;
+    padding-left: 175px;
+    
+}
+.imagediv{
+    margin: auto;
+}
+    

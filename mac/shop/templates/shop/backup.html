@@ -1,0 +1,55 @@
+{% extends 'shop/basic.html' %}
+{% block title %} Shop {% endblock %}
+{% block main %}
+<div class="container  ">
+  <h3 style="text-align: center; font-style: italic; padding-top: 15px;">We provide best products with fastest delivery</h3>
+  <div class="row">
+
+    {% for product,classvalue in categories %}
+      <div id="carouselExampleControls{{classvalue}}" class="carousel slide col-xl-4 container px-4 pt-5" data-bs-ride="carousel" st>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card ">
+              <img src="/media/{{product.0.image}}" class="card-img-top" style="height: 200px;width: 330px; ">
+              <div class="card-body" style="text-align: center;">
+                <h5 class="card-title">{{product.0.name}}</h5>
+                <h5 class="card-title">{{product.0.price}} Rs</h5>
+                <p class="card-text" style="height: 40px;">{{product.0.description}}</p>
+                <a href="#" class="btn btn-primary">Add to cart</a> 
+              </div>
+            </div>
+          </div>
+          {% for i in product|slice:"1:" %}
+            <div class="carousel-item">
+              <div class="card">
+                <img src="/media/{{i.image}}" class="card-img-top" style="height: 200px;width: 330px; ">
+                <div class="card-body" style="text-align: center;">
+                  <h5 class="card-title">{{i.name}}</h5>
+                  <h5 class="card-title">{{i.price}} Rs</h5>
+                  <p class="card-text" style="height: 40px;">{{i.description}}</p>
+                  <a href="#" class="btn btn-primary">Add to cart</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls{{classvalue}}"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls{{classvalue}}"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <div>
+          <h4 style="text-align: center; background-color: rgb(144, 241, 241);padding-bottom: 5px;">{{product.0.category}}</h4>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}
